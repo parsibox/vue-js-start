@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<body>
+<!-- Loops -->
+<div id="app_loops" class="experiment-block">
+    <ol>
+        <li v-for="todo in todos"> {{ todo.text }} </li>
+    </ol>
+</div>
+
+<script>
+    var vm =new Vue(
+        {
+            el: '#app_loops',
+            data: {
+                todos: [
+                    {text: 'Learn JavaScript'},
+                    {text: 'Learn Vue'},
+                    {text: 'Build something awesome'},
+                    {text: 'Build something awesome111111111'},
+                ],
+            }
+        });
+        vm.todos.push({ text: 1});
+        vm.todos.push({ text: 2});
+        vm.todos.push({ text: 3});
+       // vm.todos=[{ text: 1}, {text: 2 }];
+        
+</script>
+
+
+</body>
+</html>
