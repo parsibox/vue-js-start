@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>CodePen - A Pen by  Raymond Camden</title>
+<style>
+      [v-cloak] {display: none}
+    </style>
+
+</head>
+<body translate="no">
+<div id="app" v-cloak>
+<component v-for="field in fields" :key="field.id" :is="field.type" v-bind="field">
+</component>
+</div>
+<script src='https://unpkg.com/vue'></script>
+<script id="rendered-js">
+      Vue.component('textField', {
+  template: '<div>{{ label }}<input type="text" :id="id"></div>',
+  data() {
+    return {};
+
+  },
+  computed: {},
+
+  props: ["label", "id"] });
+
+
+Vue.component('selectField', {
+  template:
+  `<div>
+{{ label }}
+<select :id="id">
+  <option v-for="answer in answers" :key="answer.value" :value="answer.value">
+    {{answer.label}}
+  </option>
+</select>
+</div>`,
+  data() {
+    return {};
+
+  },
+  computed: {},
+
+  props: ["label", "id", "answers"] });
+
+
+Vue.component('radioField', {
+  template:
+  `<div>
+  {{ label }}<br/>
+  <div v-for="answer in answers" :key="answer.value">
+  {{ answer.label }} <input type="radio" :name="id" :value="answer.value" />
+  </div>
+</div>`,
+  data() {
+    return {};
+
+  },
+  computed: {},
+
+  props: ["label", "id", "answers"] });
+
+
+const app = new Vue({
+  el: '#app',
+  data() {
+    return {
+      fields: [
+      {
+        'id': 1,
+        'label': 'Name',
+        'type': 'textField' },
+
+      {
+        'id': 2,
+        'label': 'Email',
+        'type': 'textField' },
+
+      {
+        'id': 3,
+        'label': 'Movies',
+        'type': 'selectField',
+        'answers': [
+        { value: 1, label: "Aa" },
+        { value: 2, label: "Bb" },
+        { value: 3, label: "Cc" }] },
+
+
+      {
+        'id': 4,
+        'label': 'Food',
+        'type': 'radioField',
+        'answers': [
+        { value: 1, label: "Aa" },
+        { value: 2, label: "Bb" },
+        { value: 3, label: "Cc" }] }] };
+
+
+
+
+  } });
+      //# sourceURL=pen.js
+    </script>
+</body>
+</html>
